@@ -1,7 +1,7 @@
 {
   "name": "app-tasks",
   "version": "1.0.0",
-  "author": "Ionic Framework",
+  "author": "Shelvin Batista",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
