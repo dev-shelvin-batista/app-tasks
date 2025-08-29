@@ -12,6 +12,18 @@ Este proyecto fue generado con las siguientes caracteristicas:
 |Java JDK          |`20`|
 |Gradle          |`9.0.0`|
 
+## Cambios Realizados
+
+ - Se agregó tanto en el componente que lista las tareas y categorías: 
+ 
+	 1. Un campo de texto que realiza una búsqueda por la descripción.
+	 2. Un componente llamado `ion-refresher` que permite generar nuevamente el listado de datos cuando se desliza la pantalla hacia abajo estando al principio del scroll. Muchas aplicaciones usan este componente al mostrar un listado de datos.
+	 3. Un componente llamado `ion-infinite-scroll` que permite realizar la paginación del listado, agregando 10   registros mas al listado cuando se desliza hacia lo ultimo del scroll del componente. Muchas aplicaciones usan este componente al mostrar un listado de datos. 
+	 4. Los componentes `ion-action-sheet` y `ion-item-sliding` a los componentes de listado con el objetivo de mostrar opciones que el usuario pueda seleccionar. En este caso fueron `Editar` y `Eliminar` para el listado de categorías y `Completar` y `Eliminar` para el listado de tareas.
+	 5. Un componente llamado `ion-fab` que permite generar un botón flotante, el cual ejecuta un metodo que se configure para relizar alguna acción, por ejemplo mostrar un listado de acciones (por ejemplo listado de opciones: Categorías, Nueva Tarea) o mostrar un modal (Registrar categoría). Muchas aplicaciones usan este componente al mostrar un listado de datos. 
+ - Se agregó la verificación del botón atrás del teléfono celular para generar una alerta de confirmación en el componente que lista las tareas, ya que este es la pagina inicial de la aplicación. Si el usuario selecciona el botón `Aceptar` la aplicación se cierra, sino solo se cierra la ventana de confirmación. Estas alertas se agregaron como un servicio con métodos reutilizables mediante programación orientada a objetos.
+ - En los modal que registran una tarea y una categoría el botón `Guardar` se activa si los campos de texto han sido llenados y han seleccionado alguna opción en los listados. Se pudo haber optado por renderizar o no el botón `Guardar` cumpliendo dichas condiciones pero en este caso solo se desactiva y activa.
+
 ## Instrucciones Generales
 
 - Descargar e instalar node.js para ejecutar comandos npm
