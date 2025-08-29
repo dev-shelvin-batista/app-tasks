@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="warning" (click)="closeModal()"><ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Completar Tarea</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="saveDataTask()">Guardar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ data.description }}</ion-label>
+      <ion-badge color="success" mode="ios" slot="end">{{ data.description_state }}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Observación" labelPlacement="floating" [(ngModel)]="data.observation"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

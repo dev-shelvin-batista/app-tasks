@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="warning" (click)="closeModal()"><ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Categoría</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" [disabled]="data.description == ''" (click)="saveDataCategory()">Guardar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-textarea label="Descripción" labelPlacement="floating" [(ngModel)]="data.description"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>
