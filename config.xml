@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.app.tasks" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Tareas</name>
-    <description>Ejemplo con una base de datos interna</description>
+    <name>Tasks</name>
+    <description>Application for managing simple tasks by storing information in an internal database with SQLite or Local Storage</description>
     <author email="shelvinbb@gmail.com" href="https://github.com/dev-shelvin-batista">Shelvin Batista</author>
     <content src="index.html" />
     <access origin="*" />

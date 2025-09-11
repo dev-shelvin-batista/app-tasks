@@ -1,0 +1,726 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ionic-SQLite-Tasks</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+        <link rel="stylesheet" href="../styles/laravel.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">Ionic-SQLite-Tasks</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >Tasks</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/core/services/tasks.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteTask" >deleteTask</a>
+                            </li>
+                            <li>
+                                <a href="#listTasks" >listTasks</a>
+                            </li>
+                            <li>
+                                <a href="#saveTask" >saveTask</a>
+                            </li>
+                            <li>
+                                <a href="#updateTask" >updateTask</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(connectionDB: <a href="../injectables/Connection.html" target="_self">Connection</a>, platform: Platform)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/core/services/tasks.ts:8</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>connectionDB</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/Connection.html" target="_self" >Connection</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteTask"></a>
+                    <span class="name">
+                        <span ><b>deleteTask</b></span>
+                        <a href="#deleteTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/core/services/tasks.ts:139</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method to delete a task from the internal database or local browser storage, depending on whether the application is running on Android, iOS, or a PC browser.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>id</td>
+                                                    <td>
+                                                            <code><p>ID of the task to be deleted</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listTasks"></a>
+                    <span class="name">
+                        <span ><b>listTasks</b></span>
+                        <a href="#listTasks"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/core/services/tasks.ts:23</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for listing registered tasks, either from the internal database or from the browser&#39;s local storage, depending on whether the application is running on Android, iOS, or a PC browser.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>start</td>
+                                                    <td>
+                                                            <code><p>Initial value from which records are obtained.</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>end</td>
+                                                    <td>
+                                                            <code><p>Final value up to which records are obtained</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                    <td>filters</td>
+                                                    <td>
+                                                            <code><p>Object with the data of the filters to be executed, only if sent.</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveTask"></a>
+                    <span class="name">
+                        <span ><b>saveTask</b></span>
+                        <a href="#saveTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/app/core/services/tasks.ts:89</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for recording a task in the internal database or in the browser&#39;s local storage, depending on whether the application is running on Android, iOS, or in a PC browser.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>data</td>
+                                                    <td>
+                                                            <code><p>Object with the data sent by the user</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateTask"></a>
+                    <span class="name">
+                        <span ><b>updateTask</b></span>
+                        <a href="#updateTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/core/services/tasks.ts:114</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Method for updating task data, either in the internal database or in the browser&#39;s local storage, depending on whether the application is running on Android, iOS, or in a PC browser.</p>
+</div>
+                </td>
+            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">
+                                <b>Parameters :</b>
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td>data</td>
+                                                    <td>
+                                                            <code><p>Object with the data sent by the user</p>
+</code>
+                                                    </td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Platform } from &#x27;@ionic/angular&#x27;;
+import { Connection } from &#x27;src/app/intranet/connection&#x27;;
+
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class Tasks {
+  
+  constructor(    
+    private connectionDB: Connection,
+    private platform: Platform,
+  ) {}
+
+  /**
+   * Method for listing registered tasks, either from the internal database or from the browser&#x27;s local storage, depending on whether the application is running on Android, iOS, or a PC browser.
+   * 
+   * @param start Initial value from which records are obtained.
+   * @param end Final value up to which records are obtained
+   * @param filters Object with the data of the filters to be executed, only if sent.
+   * @returns Promise with the list of registered tasks that meet the filters sent by the user.
+   */
+  listTasks &#x3D; async (start:number &#x3D; 0, end: number &#x3D; 0, filters: any &#x3D; {}): Promise&lt;any&gt; &#x3D;&gt; {
+    return new Promise(async (resolve) &#x3D;&gt; {
+      let result:any &#x3D; [];
+
+      // Check if it works on Android, iOS, or PC.
+      if(this.platform.is(&#x27;android&#x27;) || this.platform.is(&#x27;ios&#x27;)) {
+        let whereConditions &#x3D; [];
+        let whereConditionsValue &#x3D; [];
+        let strWhere &#x3D; &#x27;&#x27;;
+
+        // Apply filters if the data is sent in the object. All settings are generated to be added to the data query.
+        if(filters.taskDescription !&#x3D;&#x3D; &#x27;&#x27;){
+          whereConditions.push(&#x60;tasks.description LIKE ?&#x60;);
+          whereConditionsValue.push(&#x60;%${filters.taskDescription}%&#x60;);
+        }
+        if(filters.idCategory !&#x3D;&#x3D; &#x27;&#x27;){
+          whereConditions.push(&#x27;tasks.id_category &#x3D; ?&#x27;);
+          whereConditionsValue.push(filters.idCategory);
+        }
+        strWhere &#x3D; whereConditions.length &gt; 0 ? &#x60; WHERE ${whereConditions.join(&quot; AND &quot;)}&#x60; : &#x27;&#x27;;
+
+        // Data pagination so that not all records are displayed, but only 10 at a time.
+        strWhere +&#x3D; &#x60; LIMIT ${end - start} OFFSET ${start}&#x60;;
+
+        const data &#x3D; await this.connectionDB.db.executeSql(&quot;SELECT tasks.id, tasks.description, tasks.id_category, tasks.observation, tasks.id_state, states.description AS description_state FROM tasks INNER JOIN states ON states.id &#x3D; tasks.id_state INNER JOIN categories ON categories.id &#x3D; tasks.id_category &quot; + strWhere, whereConditionsValue);
+
+        if (data.rows.length &gt; 0) {
+          for (let i &#x3D; 0; i &lt; data.rows.length; i++) {
+            const item &#x3D; data.rows.item(i);
+            result.push(item);
+          }
+        } 
+      } else {
+        result &#x3D; [...JSON.parse(this.connectionDB.dbStorage.getItem(&quot;tasks_information&quot;) || &quot;[]&quot;)];
+
+        // Apply filters if the data is sent in the object. All settings are generated to be added to the data query.
+        if(filters.taskDescription !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; filters.idCategory !&#x3D;&#x3D; &#x27;&#x27;){
+          result &#x3D; result.filter((item:any) &#x3D;&gt; item.description.toLowerCase().includes(filters.taskDescription.toLowerCase()) &amp;&amp; item.id_category &#x3D;&#x3D;&#x3D; filters.idCategory);
+        } else if(filters.taskDescription !&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; filters.idCategory &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+          result &#x3D; result.filter((item:any) &#x3D;&gt; item.description.toLowerCase().includes(filters.taskDescription.toLowerCase()));
+        } else if(filters.taskDescription &#x3D;&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; filters.idCategory !&#x3D;&#x3D; &#x27;&#x27;) {
+          result &#x3D; result.filter((item:any) &#x3D;&gt; item.id_category &#x3D;&#x3D;&#x3D; filters.idCategory);
+        }
+        
+        // Data pagination so that not all records are displayed, but only 10 at a time.
+        if(start &gt; 0 || end &gt; 0){
+          result &#x3D;  result.slice(start, end);
+        }
+        const listStates &#x3D; [...JSON.parse(this.connectionDB.dbStorage.getItem(&quot;states_general&quot;) || &quot;[]&quot;)];
+
+        for (let i &#x3D; 0; i &lt; result.length; i++) {
+          const find &#x3D; listStates.find((item:any) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; result[i].id_state);          
+          result[i].description_state &#x3D; (find) ? find.description : &quot;&quot;;
+        }
+      }
+      resolve(result);
+    });
+  }
+
+  /**
+   * 
+   * Method for recording a task in the internal database or in the browser&#x27;s local storage, depending on whether the application is running on Android, iOS, or in a PC browser.
+   * 
+   * @param data Object with the data sent by the user
+   * @returns Promise with the result of the action.
+   */
+  saveTask &#x3D; async (data: any): Promise&lt;any&gt; &#x3D;&gt; {
+    return new Promise(async (resolve) &#x3D;&gt; {
+      // Check if it works on Android, iOS, or PC.
+      if(this.platform.is(&#x27;android&#x27;) || this.platform.is(&#x27;ios&#x27;)) {
+        await this.connectionDB.db.executeSql(&#x27;INSERT INTO tasks (description, id_category, observation, id_state) VALUES (?, ?, ?, ?)&#x27;, [data.description, data.id_category, data.observation, data.id_state]);
+      } else {         
+        const result &#x3D; [...JSON.parse(this.connectionDB.dbStorage.getItem(&quot;tasks_information&quot;) || &quot;[]&quot;)];
+        const id &#x3D; result.length &gt; 0 ? (result[result.length - 1].id + 1) : 1;
+        result.push({
+          ...data,
+          id,
+        });
+        this.connectionDB.dbStorage.setItem(&quot;tasks_information&quot;, JSON.stringify(result));
+      }
+      resolve({});
+    });
+  }
+
+  /**
+   * 
+   * Method for updating task data, either in the internal database or in the browser&#x27;s local storage, depending on whether the application is running on Android, iOS, or in a PC browser.
+   * 
+   * @param data Object with the data sent by the user
+   * @returns Promise with the result of the action.
+   */
+  updateTask &#x3D; async (data: any): Promise&lt;any&gt; &#x3D;&gt; {
+    return new Promise(async (resolve) &#x3D;&gt; {
+      // Check if it works on Android, iOS, or PC.
+      if(this.platform.is(&#x27;android&#x27;) || this.platform.is(&#x27;ios&#x27;)) {
+        await this.connectionDB.db.executeSql(&#x27;UPDATE tasks SET observation &#x3D; ?, id_state &#x3D; ? WHERE id &#x3D; ?&#x27;, [data.observation, data.id_state, data.id]);
+      } else {         
+        const result &#x3D; [...JSON.parse(this.connectionDB.dbStorage.getItem(&quot;tasks_information&quot;) || &quot;[]&quot;)];
+        let find &#x3D; result.find((item:any) &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; data.id);
+        if(find){
+          find.observation &#x3D; data.observation;
+          find.id_state &#x3D; data.id_state;
+        }
+        this.connectionDB.dbStorage.setItem(&quot;tasks_information&quot;, JSON.stringify(result));
+      }
+      resolve({});
+    });
+  }
+
+  /**
+   * 
+   * Method to delete a task from the internal database or local browser storage, depending on whether the application is running on Android, iOS, or a PC browser.
+   * 
+   * @param id ID of the task to be deleted
+   * @returns Promise with the result of the action.
+   */
+  deleteTask &#x3D; async (id: number): Promise&lt;any&gt; &#x3D;&gt; {
+    return new Promise(async (resolve) &#x3D;&gt; {
+      // Check if it works on Android, iOS, or PC.
+      if(this.platform.is(&#x27;android&#x27;) || this.platform.is(&#x27;ios&#x27;)) {
+        await this.connectionDB.db.executeSql(&#x27;DELETE FROM tasks WHERE id &#x3D; ?&#x27;, [id]);
+      } else {         
+        const result &#x3D; [...JSON.parse(this.connectionDB.dbStorage.getItem(&quot;tasks_information&quot;) || &quot;[]&quot;)].filter((item:any) &#x3D;&gt; item.id !&#x3D;&#x3D; id);
+        this.connectionDB.dbStorage.setItem(&quot;tasks_information&quot;, JSON.stringify(result));
+      }
+      resolve({});
+    });
+  }  
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'Tasks.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

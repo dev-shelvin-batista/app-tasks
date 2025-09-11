@@ -24,14 +24,14 @@ export class FinishTaskComponent  implements OnInit {
   ) { }
 
    /**
-   * Método para el componente que se usa como modal
+   * Method for the component used as modal
    */
   closeModal(){
     this.modalController.dismiss();
   }
 
   /**
-   * Método para enviar y guardar los datos a la base de datos interna o al local storage dependiendo de donde se este ejecutando la app
+   * Method for sending and saving data to the internal database or local storage, depending on where the application is running.
    */
   async saveDataTask(){
     this.data.id_state = 2;
@@ -40,7 +40,7 @@ export class FinishTaskComponent  implements OnInit {
   }
 
   /**
-   * Evento para ejecutar instrucciones cuando carga el componente
+   * Event to execute instructions when the component is loaded.
    */
   ngOnInit() {}
 

@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center">Tareas</ion-title>
+    <ion-title class="ion-text-center">Tasks</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tareas</ion-title>
+      <ion-title size="large">Tasks</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -18,9 +18,9 @@
           <ion-searchbar class="ion-no-padding" placeholder="Buscar" [(ngModel)]="filters.taskDescription" (ngModelChange)="changeFilters()" animated></ion-searchbar>
         </ion-item>
         <ion-item>
-          <ion-label>Categoría</ion-label>
-          <ion-select mode="ios" okText="Acetar" cancelText="Cancelar" interface="action-sheet" slot="end" [(ngModel)]="filters.idCategory" (ngModelChange)="changeFilters()">
-            <ion-select-option value="">Seleccione...</ion-select-option>
+          <ion-label>Category</ion-label>
+          <ion-select mode="ios" okText="Accept" cancelText="Cancel" interface="action-sheet" slot="end" [(ngModel)]="filters.idCategory" (ngModelChange)="changeFilters()">
+            <ion-select-option value="">Select...</ion-select-option>
             <ion-select-option [value]="item.id" *ngFor="let item of listCategories">{{ item.description }}</ion-select-option>
           </ion-select>
         </ion-item>
@@ -58,10 +58,10 @@
       <ion-icon name="ellipsis-vertical-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button  data-desc="Nueva Tarea" (click)="addTask()">
+      <ion-fab-button data-desc="New task" (click)="addTask()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button data-desc="Categorías" (click)="showCategories()">
+      <ion-fab-button data-desc="Categories" (click)="showCategories()">
         <ion-icon name="list-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

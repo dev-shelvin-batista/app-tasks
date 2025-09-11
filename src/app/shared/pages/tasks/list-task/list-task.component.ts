@@ -38,15 +38,15 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para generar un listado de opciones cuando se selecciona una tarea del listado renderizado en el componente
+   * Method for generating a list of options when a task is selected from the list displayed in the component.
    */
   async selectTask(data: any){
     const buttons = [];
     
-    // Verificar si el estado de la tarea es diferente a 2, es decir si no esta completada para no generar esta opción
+    // Check if the task status is different from 2, i.e., if it is not completed, so as not to generate this option.
     if(data.id_state !== 2){
       buttons.push({
-        text: 'Completar',
+        text: 'Finish',
         icon: 'checkmark-outline',
         handler: async () => {
           this.finishTask(data);
@@ -54,7 +54,7 @@ export class ListTaskComponent implements OnInit {
       })
     }
     buttons.push({
-      text: 'Eliminar',
+      text: 'Delete',
       icon: 'trash',
       handler: async () => {
         await this.deleteTask(data.id);
@@ -70,14 +70,14 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para eliminar una tarea seleccionada. Se genera un mensaje de confirmación antes de realizar dicha acción.
+   * Method for deleting a selected task. A confirmation message is generated before performing this action.
    * 
-   * @param id Id de la tarea
+   * @param id Task ID
    */
   deleteTask(id: number = 0){
     this.alertSer.generateConfirmationAlert(
-      "Confirmación",
-      "¿Desea eliminar esta tarea?",
+      "Confirmation",
+      "Do you want to delete this task?",
       async () => {
         this.taskSer.deleteTask(id);
         this.changeFilters();
@@ -86,7 +86,7 @@ export class ListTaskComponent implements OnInit {
   }
   
   /**
-   * Método para mostrar el componente de crear una tarea como modal
+   * Method to display the component for creating a task as a modal.
    */
   async addTask() {
     const modal = await this.modalController.create(
@@ -104,7 +104,7 @@ export class ListTaskComponent implements OnInit {
   }
   
   /**
-   * Método para mostrar el componente de listar categrías como modal
+   * Method to display the category list component as a modal
    */
   async showCategories() {
     const modal = await this.modalController.create(
@@ -123,7 +123,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para mostrar el componente de completar una tarea como modal
+   * Method to display the task completion component as a modal.
    */
   async finishTask(data: any) {
     const modal = await this.modalController.create(
@@ -142,9 +142,9 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para listar las tareas usando los datos de filtro (buscar por descripción o categoría) o listar las tareas registradas. Este listado es paginado es decir se generan de 10 en 10 dependiendo de la pagina. En este caso es desde la primera pagina.
+   * Method for listing tasks using filter data (search by description or category) or listing registered tasks. This list is paginated, which means that 10 tasks are generated per page, depending on the page. In this case, it is from the first page.
    * 
-   * @param event Objeto con los datos del infinite scroll que permite la paginación, es decir pasar de una pagina a otra o del refresher que permite listar nuevamente los datos
+   * @param event Object with infinite scroll data that allows pagination, i.e., moving from one page to another, or the refresh button that allows the data to be displayed again.
    */
   async changeFilters(event: any = null) {
     this.startCon = 0;
@@ -156,7 +156,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para listar las categorías del filtro de datos
+   * Method for enumerating data filter categories
    */
   async listAllCategories() {
     const result = await this.categoriesSer.listCategories(); 
@@ -164,12 +164,12 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Método para listar las tareas usando los datos de filtro (buscar por descripción o categoría) o listar las tareas registradas. Este listado es paginado es decir se generan de 10 en 10 dependiendo de la pagina. En este caso es dinamico desde donde empiza hasta donde termina la carga de datos. 
+   * Method for listing tasks using filter data (search by description or category) or listing registered tasks. This list is paginated, which means that 10 tasks are generated per page, depending on the page. In this case, it is dynamic from where the data loading begins to where it ends. 
    * 
-   * @param event Objeto con los datos del infinite scroll que permite la paginación, es decir pasar de una pagina a otra o del refresher que permite listar nuevamente los datos
-   * @param start Valor inicial desde donde se obtienen los datos para la paginación
-   * @param end Valor final hasta donde se obtienen los datos para la paginación
-   * @param filters Objeto con los datos de los filtros para generar el listado
+   * @param event Object with infinite scroll data that allows pagination, i.e., moving from one page to another, or refresh, which allows the data to be displayed again.
+   * @param start Initial value from which the data for pagination is obtained.
+   * @param end Final value up to which data is obtained for pagination.
+   * @param filters Object with filter data to generate the list
    */
   async listAllTasks(event: any = null, start:number = 0, end: number = 0, filters: any = {}) {
     const result = await this.taskSer.listTasks(start, end, filters);
@@ -177,16 +177,16 @@ export class ListTaskComponent implements OnInit {
     this.listTasksFilter = [...this.listTasks];
     await this.listAllCategories();
     
-    // Detener el efecto ya se del inifinte scroll o refresher
+    // Stop infinite scroll or refresh effect
     if(event){
-      event.target.complete(); // End the refreshing process
+      event.target.complete(); 
     }
   }
 
   /**
-   * Método para la paginación de datos que se ejecuta con el componente infinite scroll de ionic
+   * Method for paginating data that runs with Ionic's infinite scroll component.
    * 
-   * @param event Objeto con los datos del infinite scroll que permite la paginación, es decir pasar de una pagina a otra 
+   * @param event Object with infinite scroll data that allows pagination, i.e., moving from one page to another. 
    */
   async loadData(event:any) {    
     if(event){
@@ -198,7 +198,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   /**
-   * Evento para ejecutar instrucciones cuando carga el componente
+   * Event to execute instructions when the component is loaded.
    */
   async ngOnInit() {
     

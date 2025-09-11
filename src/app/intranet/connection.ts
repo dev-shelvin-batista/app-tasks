@@ -18,10 +18,10 @@ export class Connection {
   ){}
 
   /**
-   * Método para realizar la conexión a la base de datos interna si se esta ejecutando desde android o ios o al local storage si se esta ejecutando desde el navegador en PC
+   * Method for connecting to the internal database if running from Android or iOS, or to local storage if running from a PC browser.
    */
   connectDB = async(): Promise<any> => {
-    // Verificar si se esta ejecutando desde android o ios o PC
+    // Check if it works on Android, iOS, or PC.
     if(this.platform.is('android') || this.platform.is('ios')) {
       this.db = await this.connectionDBSer.openConnectionDB();
     } else{

@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <ion-button color="warning" (click)="closeModal()"><ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Tarea</ion-title>
+    <ion-title class="ion-text-center">Task</ion-title>
     <ion-buttons slot="end" collapse="false">
-      <ion-button color="primary" [disabled]="data.description == '' || data.id_category == ''" (click)="saveDataTask()">Guardar</ion-button>
+      <ion-button color="primary" [disabled]="data.description == '' || data.id_category == ''" (click)="saveDataTask()">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,12 +13,12 @@
 <ion-content class="ion-padding">
   <ion-list>
     <ion-item>
-      <ion-textarea label="Descripción" labelPlacement="floating" [(ngModel)]="data.description"></ion-textarea>
+      <ion-textarea label="Description" labelPlacement="floating" [(ngModel)]="data.description"></ion-textarea>
     </ion-item>
     <ion-item>
-      <ion-label>Categoría</ion-label>
-      <ion-select okText="Acetar" cancelText="Cancelar" interface="action-sheet" slot="end" [(ngModel)]="data.id_category">
-        <ion-select-option value="">Seleccione...</ion-select-option>
+      <ion-label>Category</ion-label>
+      <ion-select okText="Accept" cancelText="Cancel" interface="action-sheet" slot="end" [(ngModel)]="data.id_category">
+        <ion-select-option value="">Select...</ion-select-option>
         <ion-select-option [value]="item.id" *ngFor="let item of listCategories">{{ item.description }}</ion-select-option>
       </ion-select>
     </ion-item>

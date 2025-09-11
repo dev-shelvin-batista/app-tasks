@@ -13,15 +13,15 @@ export class Categories {
   ) {}
 
   /**
-   * Método para listar las categorías registradas ya sea desde la base de datos interna o en el local storage del navegador dependiendo si se ejecuta la app desde android, ios o navegador en PC
+   * Method for listing registered categories, either from the internal database or from the browser's local storage, depending on whether the application is running on Android, iOS, or a PC browser.
    * 
-   * @returns Promesa con el listado de categorías registadas y que cumplan con los filtros enviados por el usuario
+   * @returns Promise with the list of registered categories that match the filters sent by the user.
    */
   listCategories = async (): Promise<any> => {
     return new Promise(async (resolve) => {
       let result:any = [];
 
-      // Verificar si se esta ejecutando desde android o ios o PC
+      // Check if it works on Android, iOS, or PC.
       if(this.platform.is('android') || this.platform.is('ios')) {
         const data = await this.connectionDB.db.executeSql("SELECT id, description FROM categories", []);
         if (data.rows.length > 0) {
@@ -39,14 +39,14 @@ export class Categories {
 
   /**
    * 
-   * Método para registrar una categoría ya sea en la base de datos interna o en el local storage del navegador dependiendo si se ejecuta la app desde android, ios o navegador en PC
+   * Method for registering a category in the internal database or in the browser's local storage, depending on whether the application is running on Android, iOS, or in a PC browser.
    * 
-   * @param data Objeto con los datos enviados por el usuario
-   * @returns Promesa con el resultado de la acción.
+   * @param data Object with the data sent by the user
+   * @returns Promise with the result of the action.
    */
   saveCategory = async (data: any): Promise<any> => {
     return new Promise(async (resolve) => {
-      // Verificar si se esta ejecutando desde android o ios o PC
+      // Check if it works on Android, iOS, or PC.
       if(this.platform.is('android') || this.platform.is('ios')) {
         await this.connectionDB.db.executeSql('INSERT INTO categories (description) VALUES (?)', [data.description]);
       } else {         
@@ -64,14 +64,14 @@ export class Categories {
 
   /**
    * 
-   * Método para actualizar los datos de una categoría ya sea en la base de datos interna o en el local storage del navegador dependiendo si se ejecuta la app desde android, ios o navegador en PC
+   * Method for updating data in a category, either in the internal database or in the browser's local storage, depending on whether the application is running on Android, iOS, or in a PC browser.
    * 
-   * @param data Objeto con los datos enviados por el usuario
-   * @returns Promesa con el resultado de la acción.
+   * @param data Object with the data sent by the user
+   * @returns Promise with the result of the action.
    */
   updateCategory = async (data: any): Promise<any> => {
     return new Promise(async (resolve) => {
-      // Verificar si se esta ejecutando desde android o ios o PC
+      // Check if it works on Android, iOS, or PC.
       if(this.platform.is('android') || this.platform.is('ios')) {
         await this.connectionDB.db.executeSql('UPDATE categories SET description = ? WHERE id = ?', [data.description, data.id]);
       } else {         
@@ -88,14 +88,14 @@ export class Categories {
 
   /**
    * 
-   * Método para eliminar una categoría ya sea en la base de datos interna o en el local storage del navegador dependiendo si se ejecuta la app desde android, ios o navegador en PC
+   * Method to remove a category from the internal database or local browser storage, depending on whether the application is running on Android, iOS, or a PC browser.
    * 
-   * @param id Id de la categoría a eliminar
-   * @returns Promesa con el resultado de la acción.
+   * @param id ID of the category to be deleted
+   * @returns Promise with the result of the action.
    */
   deleteCategory = async (id: number): Promise<any> => {
     return new Promise(async (resolve) => {
-      // Verificar si se esta ejecutando desde android o ios o PC
+      // Check if it works on Android, iOS, or PC.
       if(this.platform.is('android') || this.platform.is('ios')) {
         await this.connectionDB.db.executeSql('DELETE FROM categories WHERE id = ?', [id]);
       } else {         

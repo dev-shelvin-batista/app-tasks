@@ -13,15 +13,15 @@ export class States {
   ) {}
 
   /**
-   * Método para listar los estados ya sea desde la base de datos interna o en el local storage del navegador dependiendo si se ejecuta la app desde android, ios o navegador en PC
+   * Method for enumerating states, either from the internal database or in the browser's local storage, depending on whether the application is running on Android, iOS, or in a PC browser.
    * 
-   * @returns Promesa con el listado de estados registados
+   * @returns Promise with the list of registered states
    */
   listAllStates = async (): Promise<any> => {
     return new Promise(async (resolve) => {
       let result:any = [];
       
-      // Verificar si se esta ejecutando desde android o ios o PC
+      // Check if it works on Android, iOS, or PC.
       if(this.platform.is('android') || this.platform.is('ios')) {
         const data = await this.connectionDB.db.executeSql("SELECT id, description FROM states", []);
         if (data.rows.length > 0) {
