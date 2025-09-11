@@ -11,8 +11,8 @@ export class ConnectionSstorage {
   ) {}
   
   /**
-   * Método para realizar la conexión al local storage si se esta ejecutando desde el navegador en PC. Además se inician los valores si no estan creados y se crean los valores iniciales de los estados.
-   * @returns Promesa con los datos del local storage
+   * Method for connecting to local storage if running from a PC browser. In addition, values are initialized if they have not been created, and initial state values are created.
+   * @returns Promise with locally stored data
    */
   openConnectionStorage = async (): Promise<any> => {
     return new Promise(async (resolve) => {
@@ -21,19 +21,15 @@ export class ConnectionSstorage {
         const states: any = [
           {
             id: 1,
-            description: 'Activa'
+            description: 'Active'
           },
           {
             id: 2,
-            description: 'Completada'
-          },
-          {
-            id: 3,
-            description: 'Eliminada'
+            description: 'Completed'
           }
         ]
 
-        // Verificar si existen los valores en el local storage del navegador para inicializarlos. Esto sucede cuando se abre la app por primera vez
+        // Check if the values exist in the browser's local storage to initialize them. This occurs when the application is opened for the first time.
         if(db.getItem("states_general") === '[]' || db.getItem("states_general") === null){
           db.setItem("states_general", JSON.stringify(states));
         }
@@ -45,7 +41,7 @@ export class ConnectionSstorage {
         }
         resolve(db);     
       } catch (e) {
-        this.alertSer.generateSimpleAlert("Error", 'Error en la generación de la base de datos');
+        this.alertSer.generateSimpleAlert("Error", 'Error generating the database');
         resolve(null)
       }
     });

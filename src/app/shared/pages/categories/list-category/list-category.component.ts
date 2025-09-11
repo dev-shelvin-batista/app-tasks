@@ -26,30 +26,30 @@ export class ListCategoryComponent  implements OnInit {
   ) { }
 
   /**
-   * Método para el componente que se usa como modal
+   * Method for the component used as modal
    */
   closeModal(){
     this.modalController.dismiss();
   }
 
   /**
-   * Método para generar un listado de opciones cuando se selecciona una categoría del listado renderizado en el componente
+   * Method for generating a list of options when a category is selected from the list displayed in the component.
    */
   async selectCategory(data: any){
     const actionSheet = await this.actionSheetController.create({
-      //header: 'Categoría',
+      //header: 'Category',
       cssClass: 'my-custom-class',
       mode: 'ios',
       buttons: [
         {
-          text: 'Editar',
+          text: 'Edit',
           icon: 'pencil',
           handler: () => {
             this.editCategory(data);
           },
         },
         {
-          text: 'Eliminar',
+          text: 'Delete',
           icon: 'trash',
           handler: async () => {
             await this.deleteCategory(data.id);
@@ -61,14 +61,14 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Método para eliminar una categoría seleccionada. Se genera un mensaje de confirmación antes de realizar dicha acción.
+   * Method for deleting a selected category. A confirmation message is generated before performing this action.
    * 
-   * @param id Id de la categoría
+   * @param id Category ID
    */
   deleteCategory(id: number = 0){
     this.alertSer.generateConfirmationAlert(
-      "Confirmación",
-      "¿Desea eliminar esta categoría?",
+      "Confirmation",
+      "Do you want to delete this category?",
       async () => {
         this.categoriesSer.deleteCategory(id);
         await this.listAllCategories();
@@ -77,7 +77,7 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Método para mostrar el componente de editar una categoría como modal
+   * Method to display the category editing component as a modal.
    */
   async editCategory(data: any) {
     const modal = await this.modalController.create(
@@ -97,7 +97,7 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Método para mostrar el componente de crear una categoría como modal
+   * Method to display the component for creating a category as a modal.
    */
   async addCategory(id: number = 0) {
     const modal = await this.modalController.create(
@@ -115,7 +115,7 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Método para listar las categorías usando los datos de filtro (buscar por descripción) o listar las categorías registradas. 
+   * Method for listing categories using filter data (search by description) or listing registered categories. 
    * 
    */
   changeFilters() {
@@ -127,7 +127,7 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Método para listar las categorías
+   * Method for listing categories
    */
   async listAllCategories(event: any = null) {
     const result = await this.categoriesSer.listCategories(); 
@@ -139,7 +139,7 @@ export class ListCategoryComponent  implements OnInit {
   }
 
   /**
-   * Evento para ejecutar instrucciones cuando carga el componente
+   * Event to execute instructions when the component is loaded.
    */
   async ngOnInit() {
     await this.listAllCategories();

@@ -13,8 +13,8 @@ export class ConnectionDb {
   ) {}
   
   /**
-   * Método para realizar la conexión a la base de datos interna si se esta ejecutando desde android o ios. Además iniciar los valores si no estan creados. Además se crean las tablas si no están creadas y se crean los valores iniciales de los estados.
-   * @returns Promesa con el objeto creado en la conexión.
+   * Method to connect to the internal database if running on Android or iOS. It also initializes values if they have not been created. Tables are created if they do not exist, and initial values are created for the states.
+   * @returns Promise with the object created in the connection.
    */
   openConnectionDB = async (): Promise<any> => {
     return new Promise(async (resolve) => {
@@ -32,22 +32,21 @@ export class ConnectionDb {
             
             const data = await db.executeSql("SELECT COUNT(id) AS total FROM states", []);
 
-            // Verificar si existen los valores de los estados en la base de datos interna para registrarlos. Esto sucede cuando se abre la app por primera vez
+            // Checks whether status values exist in the internal database to register them. This occurs when the application is opened for the first time.
             if (data.rows.item(0).total === 0) {
-              await db.executeSql('INSERT INTO states (id, description) VALUES (?,?)', [1, 'Activa']);
-              await db.executeSql('INSERT INTO states (id, description) VALUES (?,?)', [2, 'Completada']);
-              await db.executeSql('INSERT INTO states (id, description) VALUES (?,?)', [3, 'Eliminada']);
+              await db.executeSql('INSERT INTO states (id, description) VALUES (?,?)', [1, 'Active']);
+              await db.executeSql('INSERT INTO states (id, description) VALUES (?,?)', [2, 'Completed']);
             }
             resolve(db);          
           } catch (e) {
             resolve(null)
           }
         } else {
-          this.alertSer.generateSimpleAlert("Error", 'Error en la generación de la base de datos');
+          this.alertSer.generateSimpleAlert("Error", 'Error generating the database');
           resolve(null)
         }
       } catch (e) {
-        this.alertSer.generateSimpleAlert("Error", 'Error en la generación de la base de datos');
+        this.alertSer.generateSimpleAlert("Error", 'Error generating the database');
         resolve(null)
       }
     });
